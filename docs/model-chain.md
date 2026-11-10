@@ -110,9 +110,20 @@ Side products for the dashboard, not used by SNOWPACK:
 
 - One point per station, at the station's elevation.
 - Per field and hour the first valid value wins: **station observation → HRDPS** (nearest cell, moved to the station
-  elevation; precipitation +5 % per 100 m). Radiation is always HRDPS.
+  elevation; precipitation +5 % per 100 m). Radiation comes from HRDPS unless the station measures it.
+- Station data is downloaded **every hour** (at :40 UTC) and archived, so short provider windows (Wiegele keeps
+  26 h) are not lost.
 - Quality control as in last season's notebooks (e.g. RH < 5 % counts as missing).
 - 8 aspects at 38° plus flat.
+
+| Station | Operation | Elevation | From the station | From HRDPS |
+|---|---|---|---|---|
+| Fidelity | Rogers Pass | 1905 m | TA, RH, wind, precipitation | radiation |
+| Bosworth lower | Banff | 2210 m | TA, RH, wind (Bosworth upper) | precipitation, radiation |
+| Bow Summit | Banff | 2040 m | TA, RH | wind, precipitation, radiation |
+| Lookout | Banff | 2640 m | TA, RH, wind | precipitation, radiation |
+| Whistler Rendezvous | Whistler | 1920 m | TA, RH, wind, precipitation | radiation |
+| Mt St Anne | MWHS | 1900 m | TA, wind, **shortwave and longwave radiation** | RH (sensor fault), precipitation (gauge does not catch snow) |
 
 ## 5. SNOWPACK
 

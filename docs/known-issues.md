@@ -11,10 +11,11 @@ especially at night and in inversions. Extrapolating them down gives low snowlin
 level filter is there for comparison. A profile from the bands is an option for later.</li>
 <li><strong>Station wind units.</strong> Some station wind feeds (AvCan, Whistler Blackcomb) appear to be in km/h but
 are read as m/s. Station winds then look about 3.6× too strong on the dashboard and in SNOWPACK.</li>
-<li><strong>Station archive.</strong> The hourly station download is not installed yet, so stations use only the
-providers' live window (AvCan about 7 days); older hours fall back to HRDPS.</li>
-<li><strong>MWHS station (Mt St Anne).</strong> Not running yet: coordinates, Wiegele units and a parser for the
-station page are missing.</li>
+<li><strong>Station history.</strong> The hourly station download runs since 10 Nov 2026. Earlier station hours
+come from the providers' live windows only (AvCan about 7 days, Wiegele 26 h); before that, HRDPS.</li>
+<li><strong>Mt St Anne.</strong> Coordinates are approximate (52.29, −119.36). RH reads 0–6 % and the precipitation
+gauge stays at 0 while the snow height rises, so both come from HRDPS. The logger clock is taken as a fixed UTC−7
+(checked against sunrise and sunset in the shortwave data).</li>
 <li><strong>Season start.</strong> The simulations start on 4 Oct 2026 (start of the HRDPS archive). Snow that fell
 earlier is missing.</li>
 <li><strong>No snow height assimilation.</strong> SNOWPACK is driven by precipitation only. Errors in HRDPS
