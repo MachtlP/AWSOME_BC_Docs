@@ -3,7 +3,7 @@
 MkDocs site documenting **snowpackbc**: the AWSOME snowpack model chains we run for British Columbia (Rogers Pass,
 Mike Wiegele Heliskiing, Whistler, Banff) and the dashboard at [snowpackbc.com](https://snowpackbc.com).
 
-Site: https://machtlp.github.io/AWSOME_BC/
+Site: https://machtlp.github.io/AWSOME_BC_Docs/
 
 ## Local preview
 

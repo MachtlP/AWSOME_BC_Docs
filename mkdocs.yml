@@ -1,7 +1,7 @@
 site_name: AWSOME BC
 site_description: Documentation of the snowpackbc model chains and dashboard (AWSOME for British Columbia)
-site_url: https://machtlp.github.io/AWSOME_BC/
-repo_url: https://github.com/MachtlP/AWSOME_BC
+site_url: https://machtlp.github.io/AWSOME_BC_Docs/
+repo_url: https://github.com/MachtlP/AWSOME_BC_Docs
 
 theme:
   name: mkdocs
