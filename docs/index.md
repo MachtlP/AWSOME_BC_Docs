@@ -10,6 +10,10 @@ stability indices and weather summaries appear on a web dashboard:
 - **[snowpackbc.com](https://snowpackbc.com)**: main, the checked state
 - **[dev.snowpackbc.com](https://dev.snowpackbc.com)**: dev, where new features land first
 
+![The dashboard on 10 Nov 2026: hexagons and grid cells of the four operations coloured by Sk38_CCL (left), the Location rose, elevation and datetag panels and the hazard chart (right).](assets/images/dashboard_overview.jpg)
+
+<p class="fig-caption"><strong>Figure 1.</strong> The dashboard on 10 Nov 2026: hexagons and grid cells of the four operations coloured by Sk38_CCL (left), the Location rose, elevation and datetag panels and the hazard chart (right).</p>
+
 <div class="note-box">
 <p class="note-box__title">Model output, not observations</p>
 <div class="note-box__body">
@@ -47,7 +51,17 @@ Each point is simulated for flat terrain and for 38° slopes facing N, E, S and 
 | [IV. Look up](look-up.md) | Every filter and variable: what it means, where it comes from, how it is computed |
 | [V. Known issues](known-issues.md) | Limitations and open points we know about |
 
-## 4. Credits
+## 4. Links
+
+| | |
+|---|---|
+| Dashboard | [snowpackbc.com](https://snowpackbc.com) · [dev.snowpackbc.com](https://dev.snowpackbc.com) |
+| AWSOME | [GitLab group](https://gitlab.com/avalanche-warning) · [wiki](https://gitlab.com/groups/avalanche-warning/-/wikis/home) · [Understanding AWSOME](https://gitlab.com/groups/avalanche-warning/-/wikis/home/Tutorials/Understanding-AWSOME) |
+| Weather model | [HRDPS (ECCC/MSC)](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdps/readme_hrdps_en/) · [MSC Datamart](https://dd.weather.gc.ca/) |
+| Snow model | [SNOWPACK (SLF)](https://www.slf.ch/en/services-and-products/snowpack/) |
+| Related guide | [Avalanche Canada & CAIC Models User Guide](https://docs.google.com/document/d/1RcfzdmBYc0Rx-czn1QZ2xS7nVgSdf_0gwwLDmI19XsI/edit) |
+
+## 5. Credits
 
 AWSOME is developed by the AWSOME core team ([gitlab.com/avalanche-warning](https://gitlab.com/avalanche-warning),
 [wiki](https://gitlab.com/groups/avalanche-warning/-/wikis/home)). snowpackbc adds the BC setup (HRDPS ingest and

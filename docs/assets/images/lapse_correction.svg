@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13">
+  <rect width="720" height="300" fill="#ffffff"/>
+  <!-- real terrain (30 m DEM) -->
+  <path d="M20 260 L110 210 L170 230 L240 120 L290 150 L340 70 L400 140 L450 110 L520 200 L600 180 L700 250 L700 280 L20 280 Z" fill="#e9ecef" stroke="#6c757d" stroke-width="1.5"/>
+  <!-- HRDPS smoothed terrain -->
+  <path d="M20 245 C150 215, 250 170, 340 150 S 560 190, 700 235" fill="none" stroke="#1f77b4" stroke-width="3" stroke-dasharray="7 5"/>
+  <text x="560" y="168" fill="#1f77b4">HRDPS terrain (2.5 km, smoothed)</text>
+  <text x="430" y="275" fill="#495057">real terrain (30 m MRDEM)</text>
+  <!-- point A -->
+  <circle cx="340" cy="150" r="5" fill="#1f77b4"/>
+  <circle cx="340" cy="70" r="6" fill="#d62728"/>
+  <line x1="340" y1="144" x2="340" y2="78" stroke="#d62728" stroke-width="2" marker-end="url(#a)"/>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d62728"/></marker></defs>
+  <text x="350" y="112" fill="#d62728">dz = z_DEM − z_HRDPS = +800 m</text>
+  <text x="350" y="64" fill="#d62728">peak cell: TA − 0.55 °C/100 m × 800 m = TA − 4.4 °C</text>
+  <text x="350" y="165" fill="#1f77b4">HRDPS 2 m TA at model height</text>
+  <!-- point B valley -->
+  <circle cx="110" cy="226" r="5" fill="#1f77b4"/>
+  <circle cx="110" cy="210" r="6" fill="#2ca02c"/>
+  <text x="30" y="196" fill="#2ca02c">small dz → small change</text>
+  <text x="20" y="24" font-weight="600" font-size="15">Lapse-rate correction: HRDPS → each cell's real elevation</text>
+  <text x="20" y="44" fill="#495057">Temperature with the monthly lapse rate, dew point with its own rate (humidity stays consistent).</text>
+</svg>

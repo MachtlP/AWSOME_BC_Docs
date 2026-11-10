@@ -6,6 +6,11 @@ The dashboard ([snowpackbc.com](https://snowpackbc.com), [dev](https://dev.snowp
 and **filter panels and charts** on the right. Every panel is a filter: it counts the points in each class, and a
 click on a class narrows the map to it.
 
+
+![Dashboard layout: map with sources and date (left), filter panels and hazard chart (right).](assets/images/dashboard_overview.jpg)
+
+<p class="fig-caption"><strong>Figure 1.</strong> Dashboard layout: map with sources and date (left), filter panels and hazard chart (right).</p>
+
 ## 1. Basic workflow
 
 1. **Check the date** (top left). Times are UTC, in 6 h steps. The default is today 06:00 UTC (22:00 Pacific the
@@ -32,6 +37,11 @@ click on a class narrows the map to it.
 - Hovering a level shows that band's tooltip; a click opens its details.
 - When several aspects of a band are shown, the most critical aspect counts.
 
+![How to read a hexagon: its fill is the most critical band, the icon shows each band (bottom = below treeline).](assets/images/mountain_icon.svg)
+
+<p class="fig-caption"><strong>Figure 2.</strong> How to read a hexagon: its fill is the most critical band, the icon shows each band (bottom = below treeline).</p>
+
+
 ### 2.2 Fully gridded cells
 
 - Each 2.5 km cell is filled with its most critical selected aspect.
@@ -53,6 +63,11 @@ click on a class narrows the map to it.
   - **Colour:** the wind class.
 - Where arrows would overlap, the strongest wind is kept.
 
+![Classified by Wind 24 h mean (dev): arrows point downwind; here a light SW to S wind over Rogers Pass.](assets/images/map_wind_arrows.jpg)
+
+<p class="fig-caption"><strong>Figure 3.</strong> Classified by Wind 24 h mean (dev): arrows point downwind; here a light SW to S wind over Rogers Pass.</p>
+
+
 ## 3. Filter panels
 
 | Panel | Chart | Notes |
@@ -67,6 +82,11 @@ click on a class narrows the map to it.
 | **Wind direction 24 h** | Rose, 8 sectors | Where the wind came from |
 | **Air temperature** | Bars | At the time step |
 | **Snowline, Snow level MSC** | Bars, 250 m steps | Our rain/snow line and MSC's snow level, for comparison |
+
+
+![The Location rose: hovering a cell shows aspect · band, the classifying filter, the number of points and each class in %.](assets/images/rose_tooltip.png)
+
+<p class="fig-caption"><strong>Figure 4.</strong> The Location rose: hovering a cell shows aspect · band, the classifying filter, the number of points and each class in %.</p>
 
 Every filter is explained in [Look up](look-up.md).
 
@@ -98,6 +118,8 @@ precipitation fell, or the MSC snow level before 12 Oct 2026.
 ### 4.2 Time series
 
 - For the selected point: the index of the active stability regime over the last 14 days and the next 3.
+
+Code: the dashboard is AWSOME's [albina-admin-gui](https://gitlab.com/avalanche-warning/visualization/albina-admin-gui) (branch `awsome`) with the snowpackbc patches; the aspect / elevation rose is proposed upstream on branch [2-aspect-elevation-rose](https://gitlab.com/avalanche-warning/visualization/albina-admin-gui/-/tree/2-aspect-elevation-rose).
 
 ## 5. Sharing a view
 

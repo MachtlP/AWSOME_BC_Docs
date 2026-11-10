@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 230" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13">
+  <rect width="720" height="230" fill="#ffffff"/>
+  <text x="20" y="24" font-weight="600" font-size="15">Semi-distributed hexagon: fill = most critical band, icon = each band</text>
+  <!-- hexagon -->
+  <polygon points="120,50 200,50 240,120 200,190 120,190 80,120" fill="#d7191c" fill-opacity="0.75" stroke="#333"/>
+  <!-- icon: three levels -->
+  <g transform="translate(110,82)">
+    <polygon points="50,0 100,80 0,80" fill="#ffffff" stroke="#000" stroke-width="3"/>
+    <polygon points="50,0 72,35 28,35" fill="#d7191c"/>
+    <polygon points="28,35 72,35 84,57 16,57" fill="#fdae61"/>
+    <polygon points="16,57 84,57 98,79 2,79" fill="#a6d96a"/>
+    <polygon points="50,0 100,80 0,80" fill="none" stroke="#000" stroke-width="3"/>
+  </g>
+  <g>
+    <line x1="182" y1="100" x2="290" y2="72" stroke="#555"/><text x="296" y="76">alpine: very poor</text>
+    <line x1="190" y1="128" x2="290" y2="108" stroke="#555"/><text x="296" y="112">treeline: poor</text>
+    <line x1="200" y1="150" x2="290" y2="144" stroke="#555"/><text x="296" y="148">below treeline: rather stable</text>
+  </g>
+  <g transform="translate(520,58)">
+    <rect width="16" height="16" fill="#ffffff" stroke="#333"/><text x="24" y="13">no value of the index</text>
+    <rect y="28" width="16" height="16" fill="#ececec" stroke="#333"/><text x="24" y="41">filtered out</text>
+    <rect y="56" width="16" height="16" fill="#7a7a7a" stroke="#333"/><text x="24" y="69">band not in this hexagon</text>
+    <rect y="84" width="16" height="16" fill="#d7191c" fill-opacity="0.75" stroke="#333"/><text x="24" y="97">fill: worst band</text>
+  </g>
+</svg>

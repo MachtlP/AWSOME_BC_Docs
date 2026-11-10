@@ -62,9 +62,19 @@ elevation comes from the 30 m MRDEM.
 3. **Lapse-rate correction:** temperature and humidity are moved from the HRDPS terrain height to the point's real
    elevation (`dz = z_DEM − z_HRDPS`) with monthly lapse rates (November: −0.55 °C per 100 m). The dew point is moved
    with its own monthly rate, so humidity stays physically consistent.
+
+![Lapse-rate correction: HRDPS gives 2 m temperature at its smoothed terrain height; each cell is moved to its real elevation (30 m DEM). Peaks get colder, valleys warmer.](assets/images/lapse_correction.svg)
+
+<p class="fig-caption"><strong>Figure 1.</strong> Lapse-rate correction: HRDPS gives 2 m temperature at its smoothed terrain height; each cell is moved to its real elevation (30 m DEM). Peaks get colder, valleys warmer.</p>
+
 4. **Stitching:** the **nowcast** takes each hour from the newest run that covers it with a short lead (1–6 h). The
    **forecast** is the 06Z run, leads 1–48. A missing run is filled from the next older one. A gap stops the run,
    because missing precipitation would otherwise turn into 0 mm.
+
+
+![How the hourly forcing is assembled: the past from the first 6 hours of each run, the next 48 h from the 06Z run.](assets/images/nowcast_stitching.svg)
+
+<p class="fig-caption"><strong>Figure 2.</strong> How the hourly forcing is assembled: the past from the first 6 hours of each run, the next 48 h from the 06Z run.</p>
 
 Side products for the dashboard, not used by SNOWPACK:
 
@@ -83,6 +93,11 @@ Side products for the dashboard, not used by SNOWPACK:
 - One SNOWPACK point per hexagon and band: the hourly **median** of its member cells (circular mean for wind
   direction), at the median member elevation.
 - Location id `<hexagon>_<band>`, e.g. `R1_ALP`. Region id = hexagon.
+
+![Rogers Pass zoomed in: 15 km hexagons with their mountain icons, the 2.5 km grid cells underneath, and the Fidelity station marker.](assets/images/map_rogers_hex.jpg)
+
+<p class="fig-caption"><strong>Figure 3.</strong> Rogers Pass zoomed in: 15 km hexagons with their mountain icons, the 2.5 km grid cells underneath, and the Fidelity station marker.</p>
+
 
 ### 4.2 Fully gridded
 
@@ -116,7 +131,15 @@ Side products for the dashboard, not used by SNOWPACK:
 
 AWSOME's post-processing runs inside `atoolchain` after SNOWPACK:
 
-| Tool | Output |
+| Tool | Code |
+|---|---|
+| atoolchain (runs everything) | [atoolchain](https://gitlab.com/avalanche-warning/snow-cover/model-chains/atoolchain) |
+| Punstable | [punstable](https://gitlab.com/avalanche-warning/snow-cover/postprocessing/instability/punstable) |
+| PWL | [pwl](https://gitlab.com/avalanche-warning/snow-cover/postprocessing/instability/pwl) |
+| Datetags | [datetags](https://gitlab.com/avalanche-warning/snow-cover/postprocessing/instability/datetags) |
+| Pwet | [pwet](https://gitlab.com/avalanche-warning/snow-cover/postprocessing/pwet) |
+
+| Step | Output |
 |---|---|
 | **indices** | Stability indices per layer: `rc_flat`, `sk38`, `lwc`, `punstable`, `rta`, `sk38_ccl`, `sk38_ccl_rta` |
 | **pwl** | Persistent weak layers: SH, DH, FCxr, FC layers; unstable when Punstable ≥ 0.77 (only FCxr/FC go through that threshold) |

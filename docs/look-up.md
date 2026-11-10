@@ -24,6 +24,11 @@ Conventions:
 | Values | 4 aspects (N, E, S, W) + flat × 3 bands (alpine, treeline, below treeline) |
 | Use | The filter view Canadian practitioners know from the bulletin: pick e.g. "N–E alpine" |
 
+
+![Location panel](assets/images/panel_location_rose.png)
+
+<p class="fig-caption"><strong>Figure 1.</strong> Location panel.</p>
+
 ### Elevation
 
 | | |
@@ -47,11 +52,14 @@ currently classifies. The default is Sk38_CCL.
 | Classes | very poor ≤ 0.5 · poor ≤ 0.95 · fair ≤ 1.05 · rather stable > 1.05 |
 | Default | Classifies the map |
 
+![Sk38_CCL panel](assets/images/panel_sk38ccl.png)
+
 ### Punstable
 
 | | |
 |---|---|
 | Key | `snowpack.Punstable.value` |
+| Code | [punstable](https://gitlab.com/avalanche-warning/snow-cover/postprocessing/instability/punstable) |
 | Meaning | Probability that a layer is unstable: a random forest by [Mayer et al. (2022)](https://doi.org/10.5194/tc-16-4593-2022) over six layer features (viscous deformation rate, critical crack length, sphericity, grain size, skier penetration, slab density over grain size). 0–1. |
 | Classes | very poor ≥ 0.85 · poor ≥ 0.78 · fair ≥ 0.7 · rather stable < 0.7 |
 | Note | PWL detection uses 0.77 as the "unstable" threshold |
@@ -69,6 +77,7 @@ currently classifies. The default is Sk38_CCL.
 | | |
 |---|---|
 | Key | `snowpack.pwet.value` |
+| Code | [pwet](https://gitlab.com/avalanche-warning/snow-cover/postprocessing/pwet) |
 | Meaning | Probability of a wet-snow avalanche day by [Hendrick et al. (2023)](https://doi.org/10.1017/jog.2023.24): a random forest over liquid-water and weather features of the day's wettest profile. 0–1, one value per day. |
 | Classes | very poor ≥ 0.7 · poor ≥ 0.5 · fair ≥ 0.3 · rather stable < 0.3 |
 
@@ -79,6 +88,7 @@ currently classifies. The default is Sk38_CCL.
 | Key | `snowpack.<index>.instabilityDrivenBy` |
 | Meaning | Burial date of the critical layer: the precipitation event that buried it, grouped per region and band. **Unburied new snow** and **Unburied old snow** mark layers at the surface. |
 | Use | Track one weak layer across the operation, e.g. "2026-10-24" |
+| Code | [datetags](https://gitlab.com/avalanche-warning/snow-cover/postprocessing/instability/datetags) · method: [Herla et al. (2024), ISSW](https://gitlab.com/avalanche-warning/universal/archive/resources/-/raw/main/HerlaOthers2024_ISSW_Postprocessing.pdf) |
 
 ### Grain type
 
@@ -110,6 +120,8 @@ Computed by snowpackbc after SNOWPACK. Inputs: SNOWPACK's time series (every 3 h
 | Fix | The daily SNOWPACK restart writes 0 at 06Z. That row is rebuilt as HN24(t+3h) − HN3(t+3h) + HN3(t−21h). |
 | Classes | < 1 · 1–5 · 5–10 · 10–20 · 20–30 · 30–50 · ≥ 50 |
 
+![New snow 24 h panel](assets/images/panel_hn24.png)
+
 ### New snow 48 h
 
 | | |
@@ -138,6 +150,8 @@ Computed by snowpackbc after SNOWPACK. Inputs: SNOWPACK's time series (every 3 h
 | Classes | Avalanche Canada: calm < 1 · light 1–25 · moderate 26–40 · strong 41–60 · extreme > 60 |
 | Map | Wind arrows while it classifies or has a selection |
 
+![Wind 24 h mean panel](assets/images/panel_vw24.png)
+
 ### Wind direction 24 h
 
 | | |
@@ -145,6 +159,8 @@ Computed by snowpackbc after SNOWPACK. Inputs: SNOWPACK's time series (every 3 h
 | Key | `weather.dw24_sector` (degrees in `weather.dw24`) |
 | Source | Mean direction of the 24 h, each hour weighted by its wind speed (vector mean) |
 | Values | N, NE, E, SE, S, SW, W, NW: where the wind blows **from** |
+
+![Wind direction panel](assets/images/panel_dw24.png)
 
 ### Gust 24 h max
 
@@ -170,7 +186,7 @@ Computed by snowpackbc after SNOWPACK. Inputs: SNOWPACK's time series (every 3 h
 |---|---|
 | Key | `weather.snowline` |
 | Unit | m |
-| Method | 1. Take the forcing temperature and humidity of the point. 2. Move them up and down in 50 m steps with the same monthly lapse rates as the HRDPS correction. 3. Take the elevation where the **wet-bulb temperature is +1 °C** (about half the precipitation falls as snow). 4. Over 24 h: precipitation-weighted mean when ≥ 1 mm fell, otherwise the median. |
+| Method | 1. Take the forcing temperature and humidity of the point. 2. Move them up and down in 50 m steps with the same monthly lapse rates as the HRDPS correction. 3. Take the elevation where the **wet-bulb temperature is +1 °C** (about half the precipitation falls as snow; wet-bulb after [Stull 2011](https://doi.org/10.1175/JAMC-D-11-0143.1)). 4. Over 24 h: precipitation-weighted mean when ≥ 1 mm fell, otherwise the median. |
 | Points | Grid: each cell from its own temperature and elevation. Hexagons: every band takes the value of the region's **below-treeline** band (least extrapolation). |
 | Classes | < 500, then 250 m steps to 2500, 2500–3000, ≥ 3000 |
 | Caution | Extrapolates surface temperatures. In dry, cold periods this gives a hypothetical value; see [Known issues](known-issues.md). |
@@ -183,6 +199,10 @@ Computed by snowpackbc after SNOWPACK. Inputs: SNOWPACK's time series (every 3 h
 | Unit | m |
 | Source | MSC's snow level (HRDPS WEonG `HGTSNLVL`), median of the point's cells and of the hours that have a value |
 | Note | Only defined where precipitation is forecast; available from 12 Oct 2026. For comparison with our snowline. |
+
+| Our snowline | MSC snow level |
+|---|---|
+| ![Snowline panel](assets/images/panel_snowline.png) | ![Snow level MSC panel](assets/images/panel_snlvl.png) |
 
 ## 4. SNOWPACK terms
 
