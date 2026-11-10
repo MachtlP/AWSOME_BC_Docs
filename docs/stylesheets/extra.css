@@ -1,0 +1,513 @@
+.note-box {
+  border: 1px solid #7eb6e0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 1.25rem 0;
+  background: #e8f4fc;
+}
+
+.note-box__title {
+  margin: 0;
+  padding: 0.55rem 0.9rem;
+  background: #1a6fad;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.note-box__body {
+  padding: 0.85rem 0.9rem;
+  color: #1a3a52;
+}
+
+.note-box__body a {
+  color: #0d5a8f;
+  word-break: break-all;
+}
+
+.summary-box {
+  border: 1px solid #7eb896;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 1.25rem 0;
+  background: #eaf6ef;
+}
+
+.summary-box__title {
+  margin: 0;
+  padding: 0.55rem 0.9rem;
+  background: #2d6a4f;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.summary-box__body {
+  padding: 0.85rem 0.9rem;
+  color: #1b4332;
+}
+
+.summary-box__body p {
+  margin: 0 0 0.65rem;
+}
+
+.summary-box__body p:last-child {
+  margin-bottom: 0;
+}
+
+.map-frame {
+  display: block;
+  width: 100%;
+  height: 520px;
+  margin: 1.25rem 0;
+  border: 1px solid #c5d4e0;
+  border-radius: 6px;
+  background: #f4f7fa;
+}
+
+/* Numbered section headers with grey background */
+#content article h1,
+#content article h2,
+#content article h3,
+#content article h4,
+#content article h5,
+#content article h6,
+.col-md-9 h1,
+.col-md-9 h2,
+.col-md-9 h3,
+.col-md-9 h4,
+.col-md-9 h5,
+.col-md-9 h6 {
+  background: #e6e6e6;
+  padding: 0.45rem 0.75rem;
+  border-radius: 4px;
+  margin-top: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.todo-box {
+  border: 1px solid #e0a060;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 1rem 0 1.25rem;
+  background: #fff4e8;
+}
+
+.todo-box__title {
+  margin: 0;
+  padding: 0.55rem 0.9rem;
+  background: #e67e22;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.todo-box__body {
+  padding: 0.85rem 0.9rem;
+  color: #5a3a1a;
+}
+
+.todo-box__body ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.todo-box__body li {
+  margin: 0.25rem 0;
+}
+
+.quote-box {
+  border: 1px solid #c5c5c5;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0.75rem 0 1.25rem;
+  background: #ececec;
+}
+
+.quote-box__body {
+  padding: 0.9rem 1rem;
+  color: #444;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.quote-box__body p {
+  margin: 0 0 0.75rem;
+}
+
+.quote-box__body p:last-child {
+  margin-bottom: 0;
+}
+
+.section-updated {
+  margin: -0.45rem 0 1rem;
+  padding: 0 0.15rem;
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+}
+
+/* Tables: borders + horizontal scroll wrapper via caption sibling pattern */
+.col-md-9 .table-caption,
+#content article .table-caption {
+  display: block;
+  margin: 1.1rem 0 0.35rem;
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.4;
+}
+
+.col-md-9 .table-caption strong,
+#content article .table-caption strong {
+  color: #222;
+}
+
+.col-md-9 table,
+#content article table {
+  display: table;
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #9aa3ad;
+  font-size: 0.85rem;
+  margin: 0 0 1.25rem;
+  background: #fff;
+}
+
+.col-md-9 th,
+.col-md-9 td,
+#content article th,
+#content article td {
+  border: 1px solid #9aa3ad;
+  padding: 0.45rem 0.65rem;
+  vertical-align: top;
+  white-space: normal;
+}
+
+.col-md-9 thead th,
+.col-md-9 tr:first-child th,
+.col-md-9 tr:first-child td,
+#content article thead th,
+#content article tr:first-child th,
+#content article tr:first-child td {
+  background: #eef1f4;
+  font-weight: 700;
+}
+
+/* Keep wide tables scrollable without breaking borders */
+.col-md-9,
+#content article {
+  overflow-x: auto;
+}
+
+/* Click-to-zoom images */
+a.image-zoom {
+  display: inline-block;
+  max-width: 100%;
+  cursor: zoom-in;
+}
+
+a.image-zoom img {
+  max-width: 100%;
+  height: auto;
+  transition: opacity 0.15s ease;
+}
+
+a.image-zoom:hover img {
+  opacity: 0.92;
+}
+
+/* Mermaid flowcharts */
+.mermaid {
+  margin: 1rem 0 0.5rem;
+  text-align: center;
+  background: #fafbfc;
+  border: 1px solid #e0e4e8;
+  border-radius: 6px;
+  padding: 1rem 0.5rem;
+  overflow-x: auto;
+}
+
+/* Table & figure captions */
+figure {
+  margin: 1.25rem 0;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption,
+.fig-caption {
+  display: block;
+  margin: 0.45rem 0 1.1rem;
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.4;
+}
+
+figcaption strong,
+.fig-caption strong {
+  color: #222;
+}
+
+/* Display equations (MathJax) */
+.col-md-9 .eq-block,
+#content article .eq-block {
+  margin: 1rem 0 1.25rem;
+  overflow-x: auto;
+  text-align: center;
+}
+
+/* Collapsible detail tables (overview pages) */
+.col-md-9 details.table-dropdown,
+#content article details.table-dropdown {
+  margin: 1.1rem 0 1.25rem;
+  border: 1px solid #c5cdd6;
+  border-radius: 4px;
+  background: #fafbfc;
+  padding: 0 0.85rem 0.15rem;
+}
+
+.col-md-9 details.table-dropdown > summary,
+#content article details.table-dropdown > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.65rem 0;
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.4;
+}
+
+.col-md-9 details.table-dropdown > summary::-webkit-details-marker,
+#content article details.table-dropdown > summary::-webkit-details-marker {
+  display: none;
+}
+
+.col-md-9 details.table-dropdown > summary::before,
+#content article details.table-dropdown > summary::before {
+  content: "▸ ";
+  color: #666;
+  font-weight: 600;
+}
+
+.col-md-9 details.table-dropdown[open] > summary::before,
+#content article details.table-dropdown[open] > summary::before {
+  content: "▾ ";
+}
+
+.col-md-9 details.table-dropdown > summary strong,
+#content article details.table-dropdown > summary strong {
+  color: #222;
+}
+
+.col-md-9 details.table-dropdown[open],
+#content article details.table-dropdown[open] {
+  padding-bottom: 0.35rem;
+}
+
+.col-md-9 details.table-dropdown table,
+#content article details.table-dropdown table {
+  margin-top: 0.25rem;
+}
+
+/* Local paths → open / reveal in Finder */
+a.finder-link {
+  cursor: pointer;
+}
+
+.finder-link-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%) translateY(8px);
+  max-width: min(92vw, 34rem);
+  padding: 0.7rem 1rem;
+  background: #1a3a52;
+  color: #fff;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.finder-link-toast--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Click-to-maximize miniature grids (e.g. .pro evolution panels) */
+.pro-evo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.45rem;
+  margin: 1rem 0 0.35rem;
+}
+
+.pro-evo-grid--2x2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.pro-evo-grid__item {
+  margin: 0;
+  min-width: 0;
+}
+
+/* Standalone legend thumbnail (~1/3 of content width) */
+.pro-evo-grid__item--legend {
+  width: calc(100% / 3);
+  max-width: calc(100% / 3);
+  margin: 1rem 0 0.35rem;
+}
+
+/* Results › Storm Slab: 4 station columns */
+.station-col-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.65rem;
+  margin: 1rem 0 0.35rem;
+  align-items: start;
+}
+
+.station-col {
+  min-width: 0;
+}
+
+.station-col__title {
+  margin: 0 0 0.4rem;
+  padding: 0.25rem 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  color: #1a3a52;
+  background: #e8f0f6;
+  border: 1px solid #c5d4e0;
+  border-radius: 3px;
+}
+
+.station-col__figs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.station-col__figs a.glightbox {
+  display: block;
+  width: 100%;
+  border: 1px solid #c5d4e0;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #f4f7fa;
+  cursor: zoom-in;
+}
+
+.station-col__figs a.glightbox:hover {
+  border-color: #1a6fad;
+}
+
+.station-col__figs img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.station-col__figs .pro-evo-grid__label {
+  margin-top: 0.1rem;
+  margin-bottom: 0.15rem;
+}
+
+.station-col--empty .station-col__placeholder {
+  min-height: 4rem;
+  border: 1px dashed #c5d4e0;
+  border-radius: 3px;
+  background: #fafbfc;
+}
+
+@media (max-width: 900px) {
+  .station-col-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .station-col-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pro-evo-grid__item a.glightbox {
+  display: block;
+  border: 1px solid #c5d4e0;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #f4f7fa;
+  cursor: zoom-in;
+}
+
+.pro-evo-grid__item a.glightbox:hover {
+  border-color: #1a6fad;
+}
+
+.pro-evo-grid__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+
+.pro-evo-grid__label {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.72rem;
+  line-height: 1.25;
+  color: #555;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .pro-evo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pro-evo-grid--2x2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Home › Daily Updates */
+.daily-update-box {
+  border: 1px solid #b8c4ce;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0.35rem 0 1.35rem;
+  background: #f7f9fb;
+}
+
+.daily-update-box__body {
+  padding: 0.85rem 1rem;
+  color: #243447;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.daily-update-box__body p {
+  margin: 0 0 0.55rem;
+}
+
+.daily-update-box__body p:last-child {
+  margin-bottom: 0;
+}
+
+.daily-update-box__body ul {
+  margin: 0.25rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.daily-update-box__body li {
+  margin: 0.2rem 0;
+}

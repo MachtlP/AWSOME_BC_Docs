@@ -1,0 +1,12 @@
+.venv/
+site/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Local-only secrets (never push)
+private/credentials.md
+private/*.local.md
+.env
+.env.*
+!.env.example

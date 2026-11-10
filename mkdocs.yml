@@ -1,0 +1,29 @@
+site_name: AWSOME BC
+site_description: Documentation of the snowpackbc model chains and dashboard (AWSOME for British Columbia)
+site_url: https://machtlp.github.io/AWSOME_BC/
+repo_url: https://github.com/MachtlP/AWSOME_BC
+
+theme:
+  name: mkdocs
+  navigation_depth: 4
+
+markdown_extensions:
+  - toc:
+      toc_depth: 4
+  - tables
+  - fenced_code
+  - attr_list
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/image-lightbox.js
+  - javascripts/mermaid-init.js
+
+nav:
+  - I. Home: index.md
+  - II. Model Chain: model-chain.md
+  - III. Dashboard: dashboard.md
+  - IV. Look up: look-up.md
+  - V. Known issues: known-issues.md
