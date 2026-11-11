@@ -54,7 +54,7 @@ holds back the hexagons. Main is published after dev in the same run; stations a
 
 <p class="section-updated">Last updated: 10 Nov 2026</p>
 
-Every run is turned into hourly time series for **1662 points**: the HRDPS cells of the four operations. Each point's
+Every run is turned into hourly time series for **1664 points**: the HRDPS cells of the four operations. Each point's
 elevation comes from the 30 m MRDEM.
 
 1. **Nearest cell:** each point takes the nearest HRDPS grid point.

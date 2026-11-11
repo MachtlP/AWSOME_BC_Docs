@@ -28,7 +28,7 @@ accuracy on any day. Use it together with field observations and expert judgemen
 |---|---|---|---|---|
 | Rogers Pass (Glacier National Park) | `rogers_hex` | `rogers_grid` | Fidelity | 1500–2000 / 2000–2200 / 2200+ |
 | Mike Wiegele Heliskiing (MWHS) | `mwhs_hex` | `mwhs_grid` | Mt St Anne (dev) | 1500–2000 / 2000–2200 / 2200+ |
-| Whistler (Whistler Blackcomb Heliskiing) | `whistler_hex` | `whistler_grid` | Whistler Rendezvous | 1300–1800 / 1800–2000 / 2000+ |
+| Whistler (Whistler Blackcomb Heliskiing tenure + Blackcomb + Whistler Mountain; 7 hexagons, 261 grid cells) | `whistler_hex` | `whistler_grid` | Whistler Rendezvous | 1300–1800 / 1800–2000 / 2000+ |
 | Banff (Banff National Park) | `banff_hex` | `banff_grid` | Bosworth lower, Bow Summit, Lookout | 1700–2200 / 2200–2400 / 2400+ |
 
 ## 2. Three ways to look at the snowpack

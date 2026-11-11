@@ -29,4 +29,5 @@ precipitation amount, phase and timing carry straight into the snowpack.</li>
 | Date | Issue | Fix |
 |---|---|---|
 | 10 Nov 2026 | AWSOME's new snow 24 h was 0 at every 06Z (SNOWPACK restart record) | `weather.hn24` repairs that row; the New snow 24 h filter uses it |
+| 10 Nov 2026 | Whistler covered the heliski tenure and Blackcomb only | Whistler Mountain added to the outline; 7 hexagons (W7 new, all shifted 1.5 km south), 2 new grid cells; season re-run from 4 Oct |
 | 10 Nov 2026 | Equal-width rings in the rose suggested more information in the lower bands | Equal-area octagon rings |
