@@ -1,6 +1,8 @@
-# II. Model Chain
+# How It's Made
 
-<p class="section-updated">Last updated: 10 Nov 2026</p>
+For modellers and the curious: how a day's HRDPS forecast becomes the dashboard. To *use* the dashboard, see
+[Get Started](get-started.md).
+
 
 All three tool chains share one weather input: HRDPS, downloaded once and corrected once. They differ in **where**
 SNOWPACK is run (hexagon × band, grid cell, station) and in **which data** drives it.
@@ -22,7 +24,6 @@ flowchart LR
 
 ## 1. Daily schedule
 
-<p class="section-updated">Last updated: 10 Nov 2026</p>
 
 A timer on the worker starts the daily run early in the morning (10:00 UTC), with a retry later. It uses that day's
 **06Z HRDPS run** and processes hexagons first, then the full grid, then stations, so a problem further down never
@@ -40,7 +41,6 @@ holds back the hexagons. Main is published after dev in the same run; stations a
 
 ## 2. HRDPS raw
 
-<p class="section-updated">Last updated: 10 Nov 2026</p>
 
 - **Model:** ECCC/MSC **HRDPS**, 2.5 km, 4 runs per day (00/06/12/18Z), hourly leads 0–48.
 - **Source:** MSC Datamart. The fetcher checks every 30 min and archives each complete run once.
@@ -52,7 +52,6 @@ holds back the hexagons. Main is published after dev in the same run; stations a
 
 ## 3. HRDPS downscaled
 
-<p class="section-updated">Last updated: 10 Nov 2026</p>
 
 Every run is turned into hourly time series for **1664 points**: the HRDPS cells of the four operations. Each point's
 elevation comes from the 30 m MRDEM.
@@ -83,13 +82,12 @@ Side products for the dashboard, not used by SNOWPACK:
 
 ## 4. Regions and points
 
-<p class="section-updated">Last updated: 10 Nov 2026</p>
 
 ### 4.1 Semi-distributed (hexagons)
 
 - The operation is covered by **15 km hexagons**.
 - A cell belongs to hexagon H and band B if its centre lies inside H and its elevation lies in B. Band limits differ
-  per operation (see [Home](index.md#1-operations)).
+  per operation (see [Operations](operations.md)).
 - One SNOWPACK point per hexagon and band: the hourly **median** of its member cells (circular mean for wind
   direction), at the median member elevation.
 - Location id `<hexagon>_<band>`, e.g. `R1_ALP`. Region id = hexagon.
@@ -127,7 +125,6 @@ Side products for the dashboard, not used by SNOWPACK:
 
 ## 5. SNOWPACK
 
-<p class="section-updated">Last updated: 10 Nov 2026</p>
 
 - AWSOME's `atoolchain` runs SNOWPACK for each domain with the `nwp` flavour, precipitation-driven (no snow depth
   assimilation).
@@ -138,7 +135,6 @@ Side products for the dashboard, not used by SNOWPACK:
 
 ## 6. Post-processing tools
 
-<p class="section-updated">Last updated: 10 Nov 2026</p>
 
 AWSOME's post-processing runs inside `atoolchain` after SNOWPACK:
 
@@ -161,17 +157,16 @@ AWSOME's post-processing runs inside `atoolchain` after SNOWPACK:
 snowpackbc then adds:
 
 - **Weather extras** (`geojson_extras.py`): new snow 24/48 h, rain 24 h, wind, gust, air temperature, snowline, MSC
-  snow level. See [Look up](look-up.md#3-weather).
+  snow level. See [Weather Data](panels.md#weather-data).
 - **Dashboard config**: semi-distributed display, the aspect / elevation rose ("Location"), weather filters,
   classification by Sk38_CCL by default.
 
 ## 7. Dashboard
 
-<p class="section-updated">Last updated: 10 Nov 2026</p>
 
 - A static site (AWSOME's dashboard frontend `albina-admin-gui` with the snowpackbc patches) is served from S3 behind
   CloudFront.
 - Time series and profile views come from AWSOME's API and nivix on the worker.
 - **Dev** gets new features first; **main** follows once checked.
 
-See [Dashboard](dashboard.md).
+See [Get Started](get-started.md).

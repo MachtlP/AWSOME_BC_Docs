@@ -1,29 +1,106 @@
-site_name: AWSOME BC
-site_description: Documentation of the snowpackbc model chains and dashboard (AWSOME for British Columbia)
+site_name: AWSOME BC User Guide
+site_description: How to read and use the snowpackbc dashboard (AWSOME for British Columbia)
 site_url: https://machtlp.github.io/AWSOME_BC_Docs/
 repo_url: https://github.com/MachtlP/AWSOME_BC_Docs
+repo_name: AWSOME_BC_Docs
+edit_uri: edit/main/docs/
 
 theme:
-  name: mkdocs
-  navigation_depth: 4
+  name: material
+  language: en
+  icon:
+    logo: material/snowflake
+    repo: fontawesome/brands/github
+  favicon: assets/images/mountain_icon.svg
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      accent: light blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue grey
+      accent: light blue
+      toggle:
+        icon: material/weather-night
+        name: Follow system theme
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.tooltips
+    - content.tabs.link
+    - content.action.edit
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      type: date
+      fallback_to_build_date: true
+  - redirects:
+      redirect_maps:
+        dashboard.md: get-started.md
+        look-up.md: panels.md
 
 markdown_extensions:
-  - toc:
-      toc_depth: 4
-  - tables
-  - fenced_code
+  - abbr
+  - admonition
   - attr_list
+  - md_in_html
+  - tables
+  - def_list
+  - footnotes
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.keys
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.snippets:
+      auto_append:
+        - docs/includes/abbreviations.md
 
 extra_css:
   - stylesheets/extra.css
 
 extra_javascript:
   - javascripts/image-lightbox.js
-  - javascripts/mermaid-init.js
+
+exclude_docs: |
+  includes/
 
 nav:
-  - I. Home: index.md
-  - II. Model Chain: model-chain.md
-  - III. Dashboard: dashboard.md
-  - IV. Look up: look-up.md
-  - V. Known issues: known-issues.md
+  - Home: index.md
+  - Using the Dashboard:
+      - Get Started: get-started.md
+      - Read the Map: map.md
+      - Panels & Charts: panels.md
+      - How Do I…: how-do-i.md
+  - Background:
+      - Operations: operations.md
+      - How It's Made: model-chain.md
+      - Known Issues & What's New: known-issues.md
+      - Glossary: glossary.md
