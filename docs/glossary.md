@@ -12,13 +12,14 @@ Hover any of these terms elsewhere in the guide to see its short definition.
 | **HRDPS** | ECCC/MSC's 2.5 km weather model that drives all simulations |
 | **HS** | Snow height |
 | **LWC** | Liquid water content |
+| **LWC Index** | Mean liquid water content of the whole snowpack ÷ 3 %. 1 = wet throughout. |
 | **Nowcast / forecast** | Simulated with analysed weather (past) / with the 48 h HRDPS forecast (future) |
-| **Punstable** | Probability that a layer is unstable (random forest) |
-| **Pwet** | Probability of a wet-snow avalanche day (random forest) |
+| **Punstable** | Machine-learning score (0–1): how closely a layer resembles unstable layers in Swiss field tests |
+| **Pwet** | Machine-learning score (0–1): how likely a day is a wet-snow avalanche day |
 | **PWL** | Persistent weak layer (SH, DH, FC, FCxr) |
 | **RTA** | Relative threshold sum approach: structural weak-layer index |
 | **Sk38** | Skier stability index for a 38° slope. Below 1 = unstable. |
-| **Sk38_CCL** | Sk38 combined with the critical cut length. The default map colouring. |
+| **Sk38_CCL** | Critical cut length ÷ length of the crack a skier creates. Below 1 = unstable. The default map colouring. |
 | **SWE** | Snow water equivalent |
 | **Without specification** | Points with no value for a panel's variable |
 

@@ -31,6 +31,18 @@ The map, the counts in all other panels and the hazard chart now show only those
 4. Check **[Avalanche Problem](panels.md#grain-type)** for its grain type (e.g. SH, FC) and the
    [hazard chart](panels.md#hazard-chart) for how deep it is.
 
+## …Check for a Wet-Snow Cycle?
+
+1. Step to an **afternoon** time step: 00:00 UTC is 16:00 Pacific, close to the wettest time of the day.
+2. Click :material-brush-variant: **Classify** in **[LWC Index](panels.md#lwc)**. Rising values towards
+   *Unstable ≥ 1*, compared with the days before, mark the **onset**: water is working its way through the snowpack.
+3. Switch to **[Pwet](panels.md#pwet)**. It rises at the onset too, and it is the one that **drops again at the end**
+   of a cycle. The LWC Index stays near 1 once the snowpack is wet through.
+4. In **[Aspect & Elevation](panels.md#aspect-elevation)**, compare S with N and the bands. Wet-snow cycles usually
+   start on sunny aspects and at low elevations.
+5. Check **[Rain 24 h](panels.md#rain24)** and **[Air Temperature](panels.md#ta)**. Both indices are weakest in
+   rain-on-snow events.
+
 ## …Check Tomorrow's Forecast?
 
 Press `»` or ++shift+right++ to step forward 6 h at a time, up to 48 h past today's 06:00 UTC. Remember that
