@@ -522,21 +522,79 @@ The lower part of the right side shows a chart for the variable that colours the
 
 ### Hazard Chart { #hazard-chart }
 
-**What it tells you:** how weak *and* how deep the critical layers are, all in one view. It is the default lower
-chart.
+**What it tells you:** how *easy to trigger* and how *deep*, and therefore how *big*, the critical layers are,
+for every shown point at once. It is the default lower chart while a stability index colours the map.
 
-- **Y-axis:** the stability index that colours the map. For Sk38_CCL, 0 is at the top, so less stable points sit
-  higher.
-- **X-axis:** the depth of the critical layer, in cm, on a scale binned like avalanche size classes.
-- **Dots:** one per selected point. The **dashed lines** are the class limits, drawn in the class colours (for
-  Sk38_CCL: purple at 0.3, magenta at 0.75, blue at 1.05).
-- Hovering the map highlights the matching dot.
-- Look for clusters: many dots high up at medium depth mean a widespread weak layer at a depth skiers can
-  trigger.
+It is the model's version of the **hazard chart** that Canadian forecasters draw for each avalanche problem in the
+Conceptual Model of Avalanche Hazard (Statham et al. 2018). There, each problem is placed by its **likelihood** of
+avalanches and its expected **destructive size**. Herla et al. built the numerical version from distributed
+snowpack simulations, and this chart follows their approach:
 
-??? abstract "Depth classes"
-    Key `snowpack.<index>.size_estimate`: 1: 0–26 cm (small) · 2: 26–53 (medium) · 3: 53–110 (large) ·
-    4: 110–225 (very large) · 5: 225 + (extreme)
+- **Likelihood ↑ comes from the stability index.** At a single point, likelihood comes down to how sensitive the
+  layer is to triggering. The y-axis is the index that colours the map. For Sk38_CCL, 0 is at the top, so *higher
+  = easier to trigger*.
+- **Size → comes from the depth of the critical layer.** Snowpack models can't estimate avalanche size directly.
+  The burial depth of the failing layer is used instead: deeper layers release thicker slabs and bigger avalanches.
+  The axis is non-linear (0 · 18 · 35 · 70 · 150 · 300 cm, after McClung 2009), like the size scale itself.
+
+![How to read the hazard chart: shallow and reactive points sit top left, deep and reactive points top right,
+stable points at the bottom](assets/images/hazard_chart_guide.svg)
+
+**How to read it**
+
+| Look at | It tells you |
+|---|---|
+| **Where the cloud sits** | **Top right** = deep *and* easy to trigger: the most severe situation, large avalanches. **Top left** = shallow and reactive: small avalanches, typical of storm snow. **Below the blue line** = hard to trigger, whatever the depth. |
+| **How spread out it is** | One dot is one point (a hexagon band, a grid cell or a station slope). A **tight cloud** means the same conditions almost everywhere. A **wide spread** means patchy conditions: some places reactive, others not. That spread is part of the likelihood (how widespread the problem is). |
+| **The weakest dots** | The upper edge of the cloud matters more than its middle. In Herla et al., the danger rating was explained better by *percentiles*, e.g. how weak the weakest 10 % are, than by averages. |
+| **The green diamond** ◆ | The median of the shown points at the current time step. It's a quick summary, but don't let it hide a reactive minority. |
+| **Dot colours** | The grain type of each point's critical layer: yellow PP (storm snow), light blue FC, blue DH, red SH (surface hoar). See the [grain type codes](#grain-type). |
+| **Dashed lines** | The class limits, in the class colours (for Sk38_CCL: purple 0.3, magenta 0.75, blue 1.05). |
+
+**Make it one avalanche problem.** The chart shows whatever the filters let through. Click a date in
+**[Datetag](#datetag)** to see one buried layer only (one persistent problem), or *Unburied new snow* for the storm
+snow. Add **[Aspect & Elevation](#aspect-elevation)** to see it for one slope sector. Hovering the map highlights the
+point's dot.
+
+**Example: 23 Nov 2026, 06:00 UTC, all operations, coloured by Sk38_CCL**
+
+<div class="grid" markdown>
+
+![Hazard chart on 23 Nov 2026](assets/images/hazard_chart_example.jpg)
+
+<div markdown>
+
+- The cloud sits between **about 18 and 50 cm** deep, so the layers are buried deep enough for medium-sized slabs.
+  There's almost nothing deeper than 70 cm.
+- Most dots are **DH blue**: the critical layer is mostly the basal depth hoar / facets at many points.
+- Vertically it spans from **Poor to Rather Stable**. The panel counts 39 % Poor, 13 % Fair, 47 % Rather Stable and
+  < 1 % Very Poor. A good part of the terrain is reactive but few points are extreme.
+- The **median diamond** sits at about **0.95, ~30 cm**: borderline. The upper edge of the cloud, just below 0.3,
+  is the part to watch.
+- A few **red SH dots** at shallow depth mark buried surface hoar at single points. Click them on the map to check
+  where they are.
+
+*Reading:* a widespread, patchy persistent problem at medium depth. Next, select its datetag and the aspects with the
+highest share of Poor to see where it is most reactive.
+
+</div>
+</div>
+
+!!! warning "A model view, not a forecast"
+    Herla et al. compared ten winters of these charts with forecasters' assessments in Glacier National Park. The
+    two agreed best on **whether a storm slab problem is present** and on the **likelihood and size of persistent
+    slab problems**. Day-to-day differences were considerable, and it is not clear whether the model or the humans
+    were closer to reality when they disagreed. Use the chart as an independent second opinion, e.g. when deciding
+    whether a persistent problem can come off.
+
+??? abstract "Technical details"
+    | | |
+    |---|---|
+    | Y | the classifying stability index of each point's critical layer (`snowpack.<index>.value`) |
+    | X | depth of that layer, `snowpack.<index>.size_estimate`, binned 1: 0–26 cm (small) · 2: 26–53 (medium) · 3: 53–110 (large) · 4: 110–225 (very large) · 5: 225 + (extreme); axis breaks 0 · 18 · 35 · 70 · 150 · 300 cm |
+    | Diamond | median of the shown points at the dashboard time (from the time series) |
+    | Differences from Herla et al. | Herla et al. use Punstable for likelihood, flat-field profiles at treeline only, and separate storm (layers buried < 5 days) from persistent problems automatically. Here the y-axis follows the classifying index, every aspect and band is a point, and you separate problems yourself with the Datetag filter. |
+    | References | Statham, G. et al. (2018): A conceptual model of avalanche hazard. *Natural Hazards* 90, 663–691. · Herla, F., Haegeli, P., Horton, S. and Mair, P. (2025): A quantitative module of avalanche hazard – comparing forecaster assessments of storm and persistent slab avalanche problems with information derived from distributed snowpack simulations. *NHESS* 25, 625–646. [doi:10.5194/nhess-25-625-2025](https://doi.org/10.5194/nhess-25-625-2025) (preprint: [doi:10.5194/egusphere-2024-871](https://doi.org/10.5194/egusphere-2024-871)) |
 
 ### Weather Series { #weather-series }
 
