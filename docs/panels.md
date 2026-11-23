@@ -487,6 +487,8 @@ it, precipitation fell as rain. Compare it with [Snow Level MSC](#snlvl).
 </div>
 
 - It uses the same colours as the Elevation panel, so you can read the snowline against the elevation bands.
+- While it colours the map, the lower chart shows the [weather series](#weather-series): every point's snowline over
+  the last 5 days and the forecast, with the median as a thick line. Rising lines mean warming.
 
 !!! warning "Can be too low in cold, dry periods"
     It extrapolates surface temperatures, which are colder than the free air at night and in inversions. When no
@@ -504,7 +506,9 @@ it, precipitation fell as rain. Compare it with [Snow Level MSC](#snlvl).
 
 **What it tells you:** the Meteorological Service of Canada's forecast snow level, in m, with the same classes and
 colours as our [Snowline](#snowline). It only has a value where precipitation is forecast, and only from
-12 Oct 2026 on. Where the two disagree, treat the snowline with care.
+12 Oct 2026 on. Where the two disagree, treat the snowline with care. It also shows the
+[weather series](#weather-series) when it colours the map; gaps in the lines are times without forecast
+precipitation.
 
 | Our snowline | MSC snow level |
 |---|---|
@@ -599,13 +603,16 @@ highest share of Poor to see where it is most reactive.
 ### Weather Series { #weather-series }
 
 **What it tells you:** how the weather developed over the last 5 days and into the forecast. It replaces the
-hazard chart while **New Snow 24 h / 48 h**, **Rain 24 h** or **Air Temperature** colours the map.
+hazard chart while **New Snow 24 h / 48 h**, **Rain 24 h**, **Air Temperature**, **Snowline** or **Snow Level MSC**
+colours the map.
 
-- **Bars:** the daily median (for air temperature, a median line with a dashed 0 °C line).
+- **Bars:** the daily median for new snow and rain. For the states (air temperature, snowline, snow level) it is a
+  median line instead; air temperature adds a dashed 0 °C line.
 - **Thin lines:** one per shown point, so you can see the spread.
 - **Red dashed line:** today. Everything to the right is forecast.
 
-**Wind 24 h Mean** and **Gust 24 h Max** show no lower chart. The [wind arrows](map.md#wind-arrows) take its place.
+**Wind 24 h Mean**, **Gust 24 h Max** and **Wind Direction 24 h** show no lower chart. The
+[wind arrows](map.md#wind-arrows) take its place.
 
 ### Time Series { #time-series }
 
