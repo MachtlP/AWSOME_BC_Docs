@@ -10,7 +10,8 @@ the panel tells you and how to read it. The technical details are folded away at
 **Weather Data:** [New Snow 24 h](#hn24) · [New Snow 48 h](#hn48) · [Rain 24 h](#rain24) ·
 [Wind 24 h Mean](#vw24) · [Wind Direction 24 h](#dw24) · [Gust 24 h Max](#gust24) · [Air Temperature](#ta) ·
 [Snowline](#snowline) · [Snow Level MSC](#snlvl) ·
-**Charts:** [Hazard Chart](#hazard-chart) · [Weather Series](#weather-series) · [Time Series](#time-series)
+**Charts:** [Hazard Chart](#hazard-chart) · [Weather Series](#weather-series) · [Time Series](#time-series) ·
+**Map:** [Snowpack Summary](#snowpack-summary)
 </div>
 
 ## Panel Buttons { #panel-buttons }
@@ -519,6 +520,77 @@ precipitation.
     value.
 
 ---
+
+## Snowpack Summary { #snowpack-summary }
+
+**What it tells you:** in three or four sentences, how often and where stability is poor, how much new snow fell, and
+what the critical layer is, for exactly the points the map shows now. It sits at the bottom of the map, above the
+disclaimer. Click its title to fold it to one line; the :material-information-outline: opens a short explanation.
+
+The summary is **written automatically by fixed rules** in your browser (no language model, no forecaster). Every
+number comes from the shown points. It **follows every filter**: select a region, a datetag, an aspect or a band
+and it is rewritten for that selection.
+
+**What it reports**
+
+| Part | How it is worked out |
+|---|---|
+| **Weakest Class Present** | Each point gets the stability class of the index that colours the map (for Sk38_CCL: Very Poor < 0.3, Poor 0.3–0.75, Fair 0.75–1.05, Good ≥ 1.05). The weakest class that is found on at least *a few* points is reported, the way the EAWS matrix is read. |
+| **Poor or Very Poor** | How many points are Poor or Very Poor, as a frequency term, and where: each elevation band × aspect cell of the [Aspect & Elevation](#aspect-elevation) rose gets its own term (cells with fewer than 3 points get none). |
+| **New Snow 24 h / 48 h** | The median of [New Snow 24 h](#hn24) and [48 h](#hn48) per band. |
+| **Critical Layer** | Of the poor points (or of all points, if none is poor): the most common grain type, the burial date ([Datetag](#datetag)), the depth (middle 50 % of the points, with the median) and the *largest size to reckon with* (90th percentile of the model's size estimate). |
+| **Chips** | One click sets the filter: a band with its aspects (the [Aspect & Elevation](#aspect-elevation) rose) or the burial date (the [Datetag](#datetag) panel). A second click clears it. |
+
+**The words it uses**
+
+The summary speaks the language of the EAWS matrix (Müller et al. 2025) and gives the North American CMAH term
+(Statham et al. 2018) in brackets:
+
+| Share of shown points in the class | EAWS frequency | CMAH spatial distribution |
+|---|---|---|
+| more than 50 % | many | widespread |
+| 15–50 % | some | specific |
+| 3–15 % | a few | isolated |
+| less than 3 % | none or nearly none | – |
+
+EAWS *some* and CMAH *specific* share one idea: the points are found in terrain features with common
+characteristics, here a band and aspect.
+
+| Index class | EAWS stability | CMAH sensitivity to triggers |
+|---|---|---|
+| Very Poor | very poor (very easy to trigger) | touchy |
+| Poor | poor (easy to trigger) | reactive |
+| Fair | fair (difficult to trigger) | stubborn |
+| Rather Stable | good | unreactive |
+
+!!! warning "Provisional, not verified"
+    Neither the CMAH nor the EAWS matrix gives percentages for its frequency or distribution terms. The 3 / 15 / 50 %
+    thresholds above are **our provisional choice** and are being worked out against observations. Likewise, the
+    link between an index class and the CMAH sensitivity to triggers is **not established yet**: the table shows the
+    intended correspondence, not a verified one. The summary is a reading aid for the model output, not a danger
+    rating or an avalanche problem assessment.
+
+**Example: 24 Nov 2026, 06:00 UTC, all operations, coloured by Sk38_CCL**
+
+> Weakest stability class present: very poor (Sk38_CCL < 0.3), on some points (specific), 1314 of 5194 (25 %).
+> Poor or very poor stability (Sk38_CCL < 0.75) on many points (widespread), 3298 of 5194 (63 %): many at ALP (all
+> aspects), TL (all aspects), BTL (all aspects). No new snow in the last 48 h. The poor points' critical layer is
+> mostly depth hoar (DH, 70 %), buried 4 Nov, 32–66 cm deep (median 43 cm); largest size to reckon with about 3.2
+> (model estimate, 90th percentile), a persistent weak layer.
+
+*Reading:* one buried persistent layer (4 Nov) is poor at most points in every band. Click **Buried 4 Nov** to look
+at that layer alone in the [Hazard Chart](#hazard-chart).
+
+??? abstract "Technical details"
+    | | |
+    |---|---|
+    | Points | the points the filters select (highlighted-only points are left out); one point = one location × aspect |
+    | Index | the classifying stability index; if a weather variable colours the map, the default stability index |
+    | Poor | the two worst classes of the index (LWC Index: Unstable only) |
+    | Cells | band × aspect from the rose (`band`, `aspect`), at least 3 points for a frequency term |
+    | Depth | `snowpack.<index>.depth`, 25th–75th percentile and median |
+    | Size | `snowpack.<index>.size_estimate`, 90th percentile |
+    | References | Statham, G. et al. (2018): A conceptual model of avalanche hazard. *Natural Hazards* 90, 663–691. · Müller, K., Techel, F. and Mitterer, C. (2025): The EAWS matrix, a decision support tool to determine the regional avalanche danger level (Part A): conceptual development. *NHESS* 25, 4503–4525. [doi:10.5194/nhess-25-4503-2025](https://doi.org/10.5194/nhess-25-4503-2025) |
 
 ## Charts
 
