@@ -7,7 +7,7 @@ the panel tells you and how to read it. The technical details are folded away at
 **Location:** [Aspect & Elevation](#aspect-elevation) · [Elevation](#elevation) · [Datetag](#datetag) ·
 **Stability:** [Sk38_CCL](#sk38_ccl) · [Punstable](#punstable) · [LWC Index](#lwc) · [Pwet](#pwet) ·
 [Avalanche Problem](#grain-type) ·
-**Weather Data:** [New Snow 24 h](#hn24) · [New Snow 48 h](#hn48) · [Rain 24 h](#rain24) ·
+**Weather Data:** [New Snow 24 h](#hn24) · [New Snow 48 h](#hn48) · [Snow Height](#hs) · [Rain 24 h](#rain24) ·
 [Wind 24 h Mean](#vw24) · [Wind Direction 24 h](#dw24) · [Gust 24 h Max](#gust24) · [Air Temperature](#ta) ·
 [Snowline](#snowline) · [Snow Level MSC](#snlvl) ·
 **Charts:** [Hazard Chart](#hazard-chart) · [Weather Series](#weather-series) · [Time Series](#time-series) ·
@@ -385,6 +385,35 @@ classes and colours are the same as for 24 h.
 ??? abstract "Technical details"
     Key `weather.hn48` = `hn24(t) + hn24(t − 24 h)`
 
+### Snow Height { #hs }
+
+**What it tells you:** the total snow height of each point in cm, as the model simulates it. Read it together with
+[New Snow 24 h](#hn24) and [48 h](#hn48): how deep the snowpack is, and how much of it is new.
+
+<div class="ramp">
+<span style="--sw:#eef0f3">&lt; 25</span><span style="--sw:#d3d9e1">25</span><span style="--sw:#aeb9c8">50</span>
+<span style="--sw:#8394ab">100</span><span style="--sw:#5b6f8c">150</span><span style="--sw:#3a4e6b">200</span>
+<span style="--sw:#1f2e45">≥ 300 cm</span>
+</div>
+
+- Each point shows its own slope, so the [Aspect & Elevation](#aspect-elevation) rose shows how the height differs
+  between aspects and bands. Flat points are level ground, comparable with a station's snow height.
+- While it colours the map, the lower chart shows the [weather series](#weather-series): the snow height over the
+  last 5 days and the forecast, one line per location (its flat point) and the median as a thick line. Rising lines
+  mean snowfall, slowly falling lines settlement or melt.
+
+!!! warning "Model snow height"
+    It comes from SNOWPACK driven by the weather model (or by a station), not from a measurement. Where the
+    precipitation forcing is too high or too low, the height is too; compare it with nearby stations before relying
+    on it.
+
+??? abstract "Technical details"
+    | | |
+    |---|---|
+    | Key | `snowpack.hs` (SNOWPACK total snow height of the point's slope) |
+    | Series | the flat point of each location, every time step |
+    | Classes | < 25, 25–50, 50–100, 100–150, 150–200, 200–300, ≥ 300 cm |
+
 ### Rain 24 h { #rain24 }
 
 **What it tells you:** rain on the snowpack in the last 24 h, in mm. Rain adds load and liquid water fast, and
@@ -675,10 +704,10 @@ highest share of Poor to see where it is most reactive.
 ### Weather Series { #weather-series }
 
 **What it tells you:** how the weather developed over the last 5 days and into the forecast. It replaces the
-hazard chart while **New Snow 24 h / 48 h**, **Rain 24 h**, **Air Temperature**, **Snowline** or **Snow Level MSC**
+hazard chart while **New Snow 24 h / 48 h**, **Snow Height**, **Rain 24 h**, **Air Temperature**, **Snowline** or **Snow Level MSC**
 colours the map.
 
-- **Bars:** the daily median for new snow and rain. For the states (air temperature, snowline, snow level) it is a
+- **Bars:** the daily median for new snow and rain. For the states (snow height, air temperature, snowline, snow level) it is a
   median line instead; air temperature adds a dashed 0 °C line.
 - **Thin lines:** one per shown point, so you can see the spread.
 - **Red dashed line:** today. Everything to the right is forecast.
