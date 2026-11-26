@@ -552,8 +552,8 @@ precipitation.
 
 ## Snowpack Summary { #snowpack-summary }
 
-**What it tells you:** in three or four sentences, how often and where stability is poor, how much new snow fell, and
-what the critical layer is, for exactly the points the map shows now. It sits at the bottom of the map, above the
+**What it tells you:** in four or five sentences, how often and where stability is poor, how much new snow fell,
+what the critical layer is and whether the snowpack is getting wet, for exactly the points the map shows now. It sits at the bottom of the map, above the
 disclaimer. Click its title to fold it to one line; the :material-information-outline: opens a short explanation.
 
 The summary is **written automatically by fixed rules** in your browser (no language model, no forecaster). Every
@@ -567,8 +567,9 @@ and it is rewritten for that selection.
 | **Weakest Class Present** | Each point gets the stability class of the index that colours the map (for Sk38_CCL: Very Poor < 0.3, Poor 0.3–0.75, Fair 0.75–1.05, Good ≥ 1.05). The weakest class that is found on at least *a few* points is reported, the way the EAWS matrix is read. |
 | **Poor or Very Poor** | How many points are Poor or Very Poor, as a frequency term, and where: each elevation band × aspect cell of the [Aspect & Elevation](#aspect-elevation) rose gets its own term (cells with fewer than 3 points get none). |
 | **New Snow 24 h / 48 h** | The median of [New Snow 24 h](#hn24) and [48 h](#hn48) per band. |
-| **Critical Layer** | Of the poor points (or of all points, if none is poor): the most common grain type, the burial date ([Datetag](#datetag)), the depth (middle 50 % of the points, with the median) and the *largest size to reckon with* (90th percentile of the model's size estimate). |
-| **Chips** | One click sets the filter: a band with its aspects (the [Aspect & Elevation](#aspect-elevation) rose) or the burial date (the [Datetag](#datetag) panel). A second click clears it. |
+| **Critical Layer(s)** | Of the poor points (or of all points, if none is poor), grouped by the layer that is critical at each point (its burial date, [Datetag](#datetag)). Every layer that is critical at 15 % or more of them is named, up to three, top to bottom (new snow first, then the youngest burial date): its most common grain type, its depth (middle 50 % of the points) and the *largest size to reckon with* (90th percentile of the model's size estimate). A point has one critical layer per index, so a layer that is weak but never the weakest at a point does not appear. For a new-snow instability the model takes the depth from the buried layer below (e.g. *depth from the 21 Nov layer*); the summary says so. |
+| **Wet Snow** | Always both wet indices, whatever colours the map: [LWC Index](#lwc) (Unstable ≥ 1, Transitional 0.3–1, Rather Stable < 0.3) and [Pwet](#pwet) (Very Poor ≥ 0.7, Poor 0.5–0.7, Fair 0.3–0.5, Good < 0.3). For each, the worst class found on at least *a few* points, its frequency and where (band × aspect, as above); if no class above the lowest reaches a few points, "none indicated" with the highest value. Plus the median [Rain 24 h](#rain24) per band. No layer is named: both indices describe the whole snowpack, not one layer. |
+| **Chips** | One click sets the filter: a band with its aspects (the [Aspect & Elevation](#aspect-elevation) rose) or the burial date (the [Datetag](#datetag) panel); chips starting with *Wet:* select the band × aspect cells of the wet signal. A second click clears it. |
 
 **The words it uses**
 
@@ -601,13 +602,26 @@ characteristics, here a band and aspect.
 
 **Example: 24 Nov 2026, 06:00 UTC, all operations, coloured by Sk38_CCL**
 
-> Weakest stability class present: very poor (Sk38_CCL < 0.3), on some points (specific), 1314 of 5194 (25 %).
-> Poor or very poor stability (Sk38_CCL < 0.75) on many points (widespread), 3298 of 5194 (63 %): many at ALP (all
-> aspects), TL (all aspects), BTL (all aspects). No new snow in the last 48 h. The poor points' critical layer is
-> mostly depth hoar (DH, 70 %), buried 4 Nov, 32–66 cm deep (median 43 cm); largest size to reckon with about 3.2
-> (model estimate, 90th percentile), a persistent weak layer.
+> Weakest stability class present: poor (Sk38_CCL 0.3–0.75), on some points (specific), 1987 of 5183 (38 %). Poor or
+> very poor stability (Sk38_CCL < 0.75) on some points (specific), 1996 of 5183 (39 %): many at ALP (all aspects), TL
+> (N, E); some at TL (S, W), BTL (all aspects). No new snow in the last 48 h. The poor points have 2 critical layers,
+> top to bottom: depth hoar (DH), buried 4 Nov, 27–42 cm deep, 45 % of them, size ≤ 2.4, persistent; depth hoar (DH),
+> buried 22 Oct, 30–37 cm deep, 20 % of them, size ≤ 2.1, persistent (size: largest to reckon with, model estimate,
+> 90th percentile). Wet snow: LWC Index transitional (LWC Index 0.3–1) on a few points (isolated), 469 of 6600 (7 %): a
+> few at ALP (all aspects, Flat), TL (all aspects, Flat), BTL (all aspects, Flat); Pwet < 0.3 on nearly all points
+> (highest 0.61); no rain in the last 24 h.
 
-*Reading:* one buried persistent layer (4 Nov) is poor at most points in every band. Click **Buried 4 Nov** to look
+*Reading:* two buried depth hoar layers (4 Nov, 22 Oct) are poor at many points in the alpine. The wet signal is
+weak and not tied to an aspect.
+
+**Example with storm snow over a persistent layer: Whistler grid, 26 Nov 2026, N aspect, alpine**
+
+> The poor points have 2 critical layers, top to bottom: new snow (PP), within the new snow (depth from the 21 Nov
+> layer: 97–112 cm), 51 % of them, size ≤ 3.6; facets (FC), buried 21 Nov, 64–75 cm deep, 49 % of them, size ≤ 3.1,
+> persistent.
+
+*Reading:* the storm snow and the persistent facets buried 21 Nov are each the critical layer at about half the
+points. Click **Buried 21 Nov** to see the facet layer alone. Click **Buried 4 Nov** to look
 at that layer alone in the [Hazard Chart](#hazard-chart).
 
 ??? abstract "Technical details"
@@ -616,8 +630,10 @@ at that layer alone in the [Hazard Chart](#hazard-chart).
     | Points | the points the filters select (highlighted-only points are left out); one point = one location × aspect |
     | Index | the classifying stability index; if a weather variable colours the map, the default stability index |
     | Poor | the two worst classes of the index (LWC Index: Unstable only) |
+    | Wet | `snowpack.lwc.value`, `snowpack.pwet.value` (filters with `stabilityIndex: wet`); where = cells at or worse than the worst class present; rain = `weather.rain24`, band median |
     | Cells | band × aspect from the rose (`band`, `aspect`), at least 3 points for a frequency term |
-    | Depth | `snowpack.<index>.depth`, 25th–75th percentile and median |
+    | Layers | grouped by `snowpack.<index>.instabilityDrivenBy`; named if ≥ 15 % of the poor points, at most 3, ordered by burial |
+    | Depth | `snowpack.<index>.depth`, 25th–75th percentile and median; it belongs to `depthDrivenBy`, which differs from the critical layer for new-snow instabilities |
     | Size | `snowpack.<index>.size_estimate`, 90th percentile |
     | References | Statham, G. et al. (2018): A conceptual model of avalanche hazard. *Natural Hazards* 90, 663–691. · Müller, K., Techel, F. and Mitterer, C. (2025): The EAWS matrix, a decision support tool to determine the regional avalanche danger level (Part A): conceptual development. *NHESS* 25, 4503–4525. [doi:10.5194/nhess-25-4503-2025](https://doi.org/10.5194/nhess-25-4503-2025) |
 
